@@ -23,7 +23,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:sidedominicana@postgres_db:5432/postgres
     ports:
-      - "8080:8080"
+      - "3000:3000"
     volumes:
       - ./app:/usr/src/app 
 
