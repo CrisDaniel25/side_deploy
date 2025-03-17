@@ -22,10 +22,13 @@ services:
       - postgres
     environment:
       DATABASE_URL: postgres://postgres:sidedominicana@postgres_db:5432/postgres
+      SSL_CERT_PATH: /certs/fullchain.pem
+      SSL_KEY_PATH: /certs/privkey.pem
     ports:
-      - "3000:3000"
+      - "443:3000"
     volumes:
-      - ./app:/usr/src/app 
+      - /etc/letsencrypt/live/yourdomain.com/fullchain.pem:/certs/fullchain.pem
+      - /etc/letsencrypt/live/yourdomain.com/privkey.pem:/certs/privkey.pem
 
 volumes:
   postgres_data:
