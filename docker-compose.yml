@@ -25,10 +25,8 @@ services:
       SSL_CERT_PATH: /certs/fullchain.pem
       SSL_KEY_PATH: /certs/privkey.pem
     ports:
-      - "443:3000"
+      - "443:443"
     volumes:
-      - /etc/letsencrypt/live/yourdomain.com/fullchain.pem:/certs/fullchain.pem
-      - /etc/letsencrypt/live/yourdomain.com/privkey.pem:/certs/privkey.pem
 
 volumes:
   postgres_data:
