@@ -24,7 +24,6 @@ services:
       DATABASE_URL: postgres://postgres:sidedominicana@postgres_db:5432/postgres
     ports:
       - "443:443"
-    volumes:
 
 volumes:
   postgres_data:
