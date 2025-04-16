@@ -1,18 +1,18 @@
-version: "3.8"
+version: '3.8'
 
 services:
- # postgres:
- #   image: postgres:15
- #   container_name: postgres_db
- #   restart: always
- #   environment:
- #     POSTGRES_USER: postgres
- #     POSTGRES_PASSWORD: sidedominicana
- #     POSTGRES_DB: postgres
- #   ports:
- #     - "5432:5432"
- #   volumes:
- #     - postgres_data:/var/lib/postgresql/data
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sidedominicana
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   app:
     image: 251020/sidedominicana:1.2
@@ -23,9 +23,12 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:sidedominicana@postgres_db:5432/postgres
     ports:
+      - "443:443"
       - "80:80"
     volumes:
-      - ./app:/usr/src/app
+      - ./certs:/usr/src/app/certs
+    working_dir: /usr/src/app
+    command: ["node", "index.js"] 
 
 volumes:
   postgres_data:
